@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MARKED 2027 Planning Hub</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--plum:#4A1D5C;--plum2:#6B2E83;--plumL:#F3EEF6;--teal:#0F6E6E;--tealL:#E3F1F1;--gold:#B7791F;--goldL:#FBF1DE;--red:#A61B1B;--redL:#FBEAEA;--ink:#22172A;--muted:#6A6070;--line:#E6DFEA;--bg:#FBF9F6;--card:#fff;--green:#2E7D32;--greenL:#E8F3E9}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.5 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;color:var(--plum);line-height:1.2;margin:0 0 .4em}
+h2{font-size:28px}h3{font-size:20px}
+a{color:var(--teal)}
+button,input,select,textarea{font:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+header.top{background:var(--plum);color:#fff;padding:22px 0 0}
+.kick{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#F2C46D}
+header h1{color:#fff;font-size:32px;margin:6px 0 4px}
+header p{margin:0 0 14px;color:#EDE3F2;font-size:15px}
+.who{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 12px;font-size:13px;font-weight:600}
+.chip.light{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);color:#fff}
+nav.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs button{background:none;border:0;color:#E9DDEF;padding:12px 14px;font-weight:600;font-size:15px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
+nav.tabs button.on{color:#fff;border-bottom-color:#F2C46D}
+main{padding:24px 0 80px}
+.tab{display:none}.tab.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:16px}
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:760px){.g4{grid-template-columns:repeat(2,1fr)}.g3,.g2{grid-template-columns:1fr}header h1{font-size:26px}}
+.stat .n{font-family:Fraunces,Georgia,serif;font-size:38px;font-weight:800;color:var(--plum);line-height:1}
+.stat .l{color:var(--muted);font-size:14px;margin-top:6px}
+.bar{height:12px;background:var(--plumL);border-radius:6px;overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--teal);border-radius:0 6px 6px 0}
+.wsrow{display:grid;grid-template-columns:200px 1fr 64px;gap:12px;align-items:center;margin:10px 0}
+@media(max-width:560px){.wsrow{grid-template-columns:1fr 54px}.wsrow .bar{grid-column:1/-1;order:3}}
+.muted{color:var(--muted)}.small{font-size:13px}
+.callout{border-left:6px solid var(--teal);background:var(--tealL);border-radius:6px 14px 14px 6px;padding:14px 16px;margin:12px 0}
+.callout.gold{border-color:var(--gold);background:var(--goldL)}
+.callout.red{border-color:var(--red);background:var(--redL)}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th{background:var(--plum);color:#fff;text-align:left;padding:9px 10px;font-weight:600}
+td{border-bottom:1px solid var(--line);padding:9px 10px;vertical-align:top}
+tr:nth-child(even) td{background:#FCFAFD}
+.tablewrap{overflow-x:auto;border-radius:12px;border:1px solid var(--line)}
+.disc{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);background:#fff;color:var(--plum);border-radius:999px;padding:4px 10px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.disc:hover{border-color:var(--plum2)}
+.disc .c{background:var(--plum);color:#fff;border-radius:999px;padding:0 7px;font-size:12px}
+.disc .c.z{background:var(--line);color:var(--muted)}
+.sechead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
+.btn{background:var(--plum);color:#fff;border:0;border-radius:10px;padding:10px 16px;font-weight:600;cursor:pointer}
+.btn.sec{background:#fff;color:var(--plum);border:1px solid var(--plum)}
+.btn.small{padding:6px 12px;font-size:14px}
+.btn:disabled{opacity:.5;cursor:default}
+input[type=text],input[type=password],input[type=date],select,textarea{width:100%;border:1px solid #CFC6D6;border-radius:10px;padding:9px 11px;background:#fff;color:var(--ink)}
+textarea{min-height:80px;resize:vertical}
+label{font-weight:600;font-size:14px;display:block;margin:10px 0 4px}
+.opt{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:8px 0;cursor:pointer;background:#fff}
+.opt input{margin-top:4px}
+.opt.sel{border-color:var(--plum2);background:var(--plumL)}
+.tally{display:grid;grid-template-columns:1fr 46px;gap:8px;align-items:center;margin:6px 0;font-size:14px}
+.reasons{margin-top:10px}
+.reason{border-top:1px solid var(--line);padding:8px 0;font-size:14px}
+.reason b{color:var(--plum)}
+.tag{display:inline-block;border-radius:6px;padding:1px 8px;font-size:12px;font-weight:700}
+.st-Not{background:#EEE9F0;color:#5B5060}.st-In{background:var(--goldL);color:#7A4F10}.st-Done{background:var(--greenL);color:var(--green)}.st-Blocked{background:var(--redL);color:var(--red)}
+.task{display:grid;grid-template-columns:1fr auto;gap:10px;border-bottom:1px solid var(--line);padding:12px 0}
+.task:last-child{border-bottom:0}
+.task .meta{font-size:13px;color:var(--muted)}
+.task .over{color:var(--red);font-weight:700}
+.task select{width:auto;padding:5px 8px;font-size:14px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.filters button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:14px;cursor:pointer}
+.filters button.on{background:var(--plum);color:#fff;border-color:var(--plum)}
+.member{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:10px 0;flex-wrap:wrap}
+.overlay{position:fixed;inset:0;background:rgba(34,23,42,.55);display:none;align-items:flex-end;justify-content:center;z-index:50}
+.overlay.on{display:flex}
+@media(min-width:700px){.overlay{align-items:center}}
+.sheet{background:#fff;width:100%;max-width:620px;max-height:88vh;overflow:auto;border-radius:18px 18px 0 0;padding:20px}
+@media(min-width:700px){.sheet{border-radius:18px}}
+.cmt{border-bottom:1px solid var(--line);padding:10px 0}
+.cmt .h{font-size:13px;color:var(--muted)}
+.cmt .h b{color:var(--plum)}
+.cmt p{margin:4px 0 0;white-space:pre-wrap}
+.linkbtn{background:none;border:0;color:var(--red);font-size:12px;cursor:pointer;padding:0;margin-left:8px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px;z-index:60;display:none;max-width:90vw}
+.demo{background:var(--goldL);color:#6B4610;border-bottom:1px solid #EBD3A6;padding:8px 0;font-size:14px;display:none}
+.pill-ws{display:inline-block;background:var(--plumL);color:var(--plum);border-radius:999px;padding:2px 9px;font-size:12px;font-weight:600;margin:2px 4px 2px 0}
+ul.clean{padding-left:20px;margin:6px 0}
+.count{font-family:Fraunces,Georgia,serif;font-size:46px;font-weight:800;color:#F2C46D;line-height:1}
+.hero-dash{background:var(--ink);color:#fff;border:0}
+.hero-dash h3{color:#F2C46D}
+.feed .it{font-size:14px;border-bottom:1px solid var(--line);padding:8px 0}
+</style>
+</head>
+<body>
+<div class="demo" id="demo"><div class="wrap">Demo mode: the database is not connected yet, so changes will not be saved. See the setup guide (README).</div></div>
+<header class="top">
+  <div class="wrap">
+    <div class="kick">LEAC Children's Ministries · Planning Committee</div>
+    <h1>MARKED 2027: Seen. Heard. Sent.</h1>
+    <p>Our shared plan. Read it, comment, vote, and update your deliverables in one place.</p>
+    <div class="who"><span class="chip light" id="whoChip">Not signed in</span><button class="btn small sec" id="signBtn" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.5)">Sign in</button></div>
+    <nav class="tabs" id="tabs">
+      <button data-t="dash" class="on">Dashboard</button>
+      <button data-t="plan">The Plan</button>
+      <button data-t="say">Have Your Say</button>
+      <button data-t="tracker">Tracker</button>
+      <button data-t="team">Team</button>
+      <button data-t="careers">Careers</button>
+      <button data-t="decisions">Decisions</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- DASHBOARD -->
+<section class="tab on" id="t-dash">
+  <div class="card hero-dash">
+    <div class="grid g3">
+      <div><div class="count" id="dDays">–</div><div>days to MARKED 2027<br><span class="small" style="color:#CDBFD6">Proposed: Sunday 4 April 2027 (to be confirmed)</span></div></div>
+      <div><div class="count" id="dPct">–</div><div>of deliverables done</div></div>
+      <div><div class="count" id="dTeam">–</div><div>members signed up to workstreams</div></div>
+    </div>
+  </div>
+  <div class="grid g2">
+    <div class="card"><h3>Progress by workstream</h3><div id="wsProgress"></div></div>
+    <div class="card"><h3>Overdue or blocked</h3><div id="overdue" class="feed"></div></div>
+  </div>
+  <div class="grid g2">
+    <div class="card"><h3>Coming up (next 21 days)</h3><div id="upcoming" class="feed"></div></div>
+    <div class="card"><h3>Latest activity</h3><div id="activity" class="feed"></div></div>
+  </div>
+  <div class="card">
+    <h3>Why we are doing this</h3>
+    <p class="muted" style="margin-top:0">From 197 teen check-in forms across our six districts (2026 outreach):</p>
+    <div class="grid g4">
+      <div class="stat"><div class="n">46%</div><div class="l">are not fully okay</div></div>
+      <div class="stat"><div class="n">1 in 6</div><div class="l">are "struggling quietly"</div></div>
+      <div class="stat"><div class="n">48%</div><div class="l">asked for a person to talk to, a mentor, or to be heard</div></div>
+      <div class="stat"><div class="n">148</div><div class="l">said Yes or Maybe to follow-up</div></div>
+    </div>
+    <p class="small muted">Top battles: school pressure (71), faith (68), "who I am" (68), home/family (46), friendships (44), loneliness (38).</p>
+  </div>
+</section>
+
+<!-- PLAN -->
+<section class="tab" id="t-plan">
+  <div class="callout"><b>How to use this page:</b> read each section and tap <b>Discuss</b> to comment. Where we must decide something (date, 1 or 2 days, breakout format), go to <b>Have Your Say</b> and vote with your reason.</div>
+
+  <div class="card">
+    <div class="sechead"><h2>1. Fix the date first</h2><span data-thread="date"></span></div>
+    <p>Avoid WAEC/NECO (roughly May–June) and the JAMB UTME window (usually April–May, so check the 2027 timetable). Avoid term exams and the Christmas period.</p>
+    <div class="tablewrap"><table>
+      <tr><th>Option</th><th>Why</th><th>Watch out for</th></tr>
+      <tr><td><b>A. Sunday 4 April 2027</b> (recommended)</td><td>Easter/second-term break; before WAEC; ~5 months to plan.</td><td>Easter travel; some SS3 students may be in JAMB lessons.</td></tr>
+      <tr><td>B. Sunday 11 April 2027</td><td>Same benefits, one week later.</td><td>May clash with schools resuming.</td></tr>
+      <tr><td>C. Sunday 15 or 22 August 2027</td><td>Long vacation; exams are over.</td><td>Long wait; momentum is lost.</td></tr>
+      <tr><td>D. Your suggestion</td><td colspan="2">Propose another date in <b>Have Your Say</b> and give your reason.</td></tr>
+    </table></div>
+    <p class="small muted">Decision: the Director confirms the date with the Conference before Meeting 1, taking the committee's votes into account. Then we book the venue.</p>
+  </div>
+
+  <div class="card">
+    <div class="sechead"><h2>2. Program template</h2><span data-thread="program"></span></div>
+    <p><b>8:00 am – 4:00 pm</b>, ages <b>10–19</b> in three age groups: <b>10–12 Pre-teens, 13–15 Juniors, 16–19 Seniors</b>. Every session answers one of the ten issues the teens raised. <b>Counselling booths are open all day</b>, and teens may step out of any session to visit one.</p>
+    <div class="callout gold"><b>Open question: one day or two?</b> A second day would give more time for counselling and for every teen to attend every topic. Weigh it against the people and funds we have. <a href="#" data-goto="say">Vote in Have Your Say →</a></div>
+    <div class="tablewrap"><table>
+      <tr><th style="width:105px">Time</th><th>Session</th><th>Issue it addresses</th><th>Lead</th><th></th></tr>
+      <tr><td>8:00–9:00</td><td>Arrival &amp; registration: wristband by age group, name tag, parental consent forms, welcome pack</td><td>Safety &amp; consent</td><td>Registration &amp; Logistics</td><td><span data-thread="p-reg"></span></td></tr>
+      <tr><td>9:00–9:40</td><td>Opening worship (teen singers &amp; instrumentalists) + icebreaker</td><td>Real faith; talents</td><td>Program (Music)</td><td><span data-thread="p-worship"></span></td></tr>
+      <tr><td>9:40–10:20</td><td>Plenary keynote: <b>"Seen by God, Known by Name"</b></td><td>Identity &amp; self-worth</td><td>Psychologist + youth pastor</td><td><span data-thread="p-keynote"></span></td></tr>
+      <tr><td>10:20–10:50</td><td><b>Real Talk live:</b> two teens share a struggle they navigated</td><td>Emotional health</td><td><b>Teen host</b>, with an adult counsellor on standby</td><td><span data-thread="p-realtalk"></span></td></tr>
+      <tr><td>10:50–11:00</td><td>Movement break: stretch and quick game</td><td>Energy</td><td>Games team</td><td><span data-thread="p-break"></span></td></tr>
+      <tr><td>11:00–12:00</td><td><b>Breakout Round 1</b>: When I'm not okay • Study smarter • Friends, crushes &amp; boundaries (boys/girls separate) • My phone and me<br><span class="small muted">Open question: should teens choose one, or rotate through all? <a href="#" data-goto="say">Vote →</a></span></td><td>Emotional health; school &amp; literacy; purity; social media</td><td>Breakout facilitators</td><td><span data-thread="p-break1"></span></td></tr>
+      <tr><td>12:00–1:00</td><td>Lunch + <b>"Meet a Professional"</b> career tables (10-minute rotations)<br><span class="small muted">Which careers, and who can come? <a href="#" data-goto="careers">Add to the Careers list →</a></span></td><td>Career, purpose &amp; talents</td><td>Career team</td><td><span data-thread="p-career"></span></td></tr>
+      <tr><td>1:00–1:45</td><td>Team games tournament (district teams) with character lessons</td><td>Belonging; friendships</td><td>Games team</td><td><span data-thread="p-games"></span></td></tr>
+      <tr><td>1:45–2:45</td><td><b>Teens:</b> Breakout Round 2: Home &amp; family • Grace, guilt &amp; starting again • Know your body • Talents &amp; purpose<br><b>Parents (same time, separate hall):</b> "Listening to your teenager"</td><td>Family; faith; health; purpose</td><td>Breakout facilitators / Family therapist</td><td><span data-thread="p-break2"></span></td></tr>
+      <tr><td>2:45–3:30</td><td><b>Prayer session:</b> prayer circles by age group, "write your burden" prayer wall, commitment</td><td>Faith; burdens they carry</td><td>Prayer team</td><td><span data-thread="p-prayer"></span></td></tr>
+      <tr><td>3:30–4:00</td><td>Commissioning: "Sent". Parents join their teens; sign-up for mentors &amp; online groups; closing song<br><span class="small muted">How should we run this? Tap Discuss.</span></td><td>Follow-through</td><td>Assoc. Director</td><td><span data-thread="p-commission"></span></td></tr>
+      <tr><td><b>All day</b></td><td><b>Counselling booths:</b> 3–4 screened booths, each with a licensed counsellor + trained helper (two-adult rule), plus a Prayer booth and a "Just to talk" booth</td><td>Every issue</td><td>Counselling &amp; Safeguarding</td><td><span data-thread="p-booths"></span></td></tr>
+    </table></div>
+    <div class="callout"><b>Breakout 2 and the parents' session:</b> parents do <b>not</b> join Breakout 2. From 1:45 to 2:45 the teens are in their breakouts while the parents have their own session in a separate hall. Parents then join their teens for the 3:30 Commissioning, so they can pray over them.</div>
+    <p class="small muted">Planning numbers: 250–350 teens (232 attended in 2026) + 60–100 parents + ~40 volunteers. Plan feeding, seats and transport on 350 teens.</p>
+  </div>
+
+  <div class="card">
+    <div class="sechead"><h2>3. The committee: six workstreams</h2><span data-thread="workstreams"></span></div>
+    <p><b>Choose where you will serve</b> on the <a href="#" data-goto="team">Team</a> tab. You are free to form your own workstream team: pick people you work well with, or ask the Director for suggestions. Most roles need 1–2 hours a week, more in the final month.</p>
+    <div class="tablewrap"><table>
+      <tr><th>Workstream</th><th>Responsible for</th><th>Good fit for</th><th>Time</th></tr>
+      <tr><td><b>1. Program &amp; Speakers</b></td><td>Sessions, speakers, facilitators, music, Real Talk, career tables</td><td>Teaching/ministry; contacts</td><td>2 hrs/wk</td></tr>
+      <tr><td><b>2. Counselling &amp; Safeguarding</b></td><td>Booths, vetted counsellors, consent forms, two-adult rule, referrals, follow-up after the day</td><td>Counselling, medicine, law, social work</td><td>1–2 hrs/wk</td></tr>
+      <tr><td><b>3. Logistics &amp; Venue</b></td><td>Venue, seating, sound, booths, feeding, transport, first aid, security, timing</td><td>Organising/operations: <b>no teen expertise needed</b></td><td>1 hr/wk; more in final 6 weeks</td></tr>
+      <tr><td><b>4. Registration &amp; Districts</b></td><td>Registration forms, district coordinators, numbers, wristbands, data protection</td><td>Admin, data, church network</td><td>1 hr/wk</td></tr>
+      <tr><td><b>5. Parents &amp; Local Churches</b></td><td>See the note below</td><td>Pastoral/family ministry</td><td>1–2 hrs/wk</td></tr>
+      <tr><td><b>6. Media, Online Groups &amp; Finance</b></td><td>Publicity, photos (with consent), WhatsApp channel; budget, sponsorship, accounts</td><td>Media/design, accounting, fundraising</td><td>1–2 hrs/wk</td></tr>
+    </table></div>
+    <div class="callout gold"><b>What "Local Churches" means:</b> this workstream works <b>through</b> the local churches in two ways. (1) Before the program, it gets pastors to announce the program and invite teens and parents. (2) It helps each church name a <b>teen mentor pair</b> who will follow up teens after the day. The parents' session itself happens at the event. Parent seminars in local churches come later, as a follow-up series after MARKED 2027.</div>
+  </div>
+
+  <div class="card">
+    <div class="sechead"><h2>4. Deliverables for Meeting 1</h2><span data-thread="deliverables"></span></div>
+    <p>Each item is a <b>short draft</b> (a one-page note or a list), not a finished product. Track and update them on the <a href="#" data-goto="tracker">Tracker</a>.</p>
+    <ul class="clean">
+      <li><b>Director:</b> confirmed date (or top two options); budget ceiling; who is on which workstream</li>
+      <li><b>Program:</b> 2 possible speakers per main session; draft list of breakout facilitators</li>
+      <li><b>Counselling &amp; Safeguarding:</b> 6–8 possible counsellors; draft consent form; "if a teen discloses harm" card</li>
+      <li><b>Logistics:</b> 2–3 venue options compared; feeding cost per head; transport plan per district</li>
+      <li><b>Registration:</b> one coordinator per district; draft registration form</li>
+      <li><b>Parents &amp; Local Churches:</b> draft message to pastors; 2 speakers for the parents' session</li>
+      <li><b>Media &amp; Finance:</b> budget template; 3 sponsorship ideas; save-the-date text</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="sechead"><h2>5. Timeline</h2><span data-thread="timeline"></span></div>
+    <div class="tablewrap"><table>
+      <tr><th style="width:160px">When</th><th>Milestone</th></tr>
+      <tr><td>Early Nov 2026</td><td>Roles chosen on this hub; deliverables assigned</td></tr>
+      <tr><td>Mid/late Nov 2026</td><td><b>Meeting 1</b> (90 min): date locked, venue shortlisted, budget ceiling agreed</td></tr>
+      <tr><td>Dec 2026</td><td>Venue booked; speakers invited; save-the-date out</td></tr>
+      <tr><td>Jan 2027</td><td><b>Meeting 2</b>: speakers &amp; counsellors confirmed; registration opens</td></tr>
+      <tr><td>Feb 2027</td><td>Real Talk teens prepared; sponsorship secured; safeguarding training</td></tr>
+      <tr><td>Early Mar 2027</td><td><b>Meeting 3</b>: full run-of-day; feeding &amp; transport booked</td></tr>
+      <tr><td>Mid/late Mar 2027</td><td>Final numbers; printing; volunteer briefing; site walk-through</td></tr>
+      <tr><td><b>4 Apr 2027 (proposed)</b></td><td><b>MARKED 2027</b></td></tr>
+      <tr><td>Within 2 weeks after</td><td>Every booth referral followed up; teens added to mentoring groups; debrief</td></tr>
+    </table></div>
+  </div>
+
+  <div class="card">
+    <div class="sechead"><h2>6. Budget headings</h2><span data-thread="budget"></span></div>
+    <p class="muted">The Finance workstream fills in the costs. Comment here with prices you know of.</p>
+    <p>Venue (hall + side rooms) · Feeding (~400) · Water &amp; snacks · Sound &amp; projection · Speaker honoraria/transport · Counsellors' transport · Printing · Wristbands · Games &amp; prizes · District transport support · First aid · Contingency (10%)</p>
+  </div>
+
+  <div class="card">
+    <div class="sechead"><h2>7. Meeting 1 agenda (90 minutes)</h2><span data-thread="agenda"></span></div>
+    <ol class="clean">
+      <li>Opening prayer &amp; 5 key findings from the teens (10 min)</li>
+      <li>Confirm the date; walk through the program and the vote results (15 min)</li>
+      <li>Workstream report-backs, 5 min each (35 min)</li>
+      <li>Decisions: venue, budget ceiling, first speakers to invite (15 min)</li>
+      <li>Next deliverables &amp; date of Meeting 2 (10 min)</li>
+      <li>Closing prayer (5 min)</li>
+    </ol>
+  </div>
+</section>
+
+<!-- HAVE YOUR SAY -->
+<section class="tab" id="t-say">
+  <div class="callout">Vote on each question and <b>give your reason</b>. You can change your vote at any time, and everyone's reasons are shown so we can decide well together.</div>
+  <div id="polls"></div>
+</section>
+
+<!-- TRACKER -->
+<section class="tab" id="t-tracker">
+  <div class="card">
+    <div class="sechead"><h2>Deliverables tracker</h2><span class="small muted" id="trkSummary"></span></div>
+    <p class="small muted" style="margin-top:0">Signed-in members can update the status, owner and a short note on any task. The Director can add, edit and remove tasks.</p>
+    <div class="filters" id="wsFilters"></div>
+    <div id="taskList"></div>
+  </div>
+  <div class="card" id="adminTask" style="display:none">
+    <h3>Add a task (Director)</h3>
+    <div class="grid g3">
+      <div><label>Workstream</label><select id="ntWs"></select></div>
+      <div><label>Due date</label><input type="date" id="ntDue"></div>
+      <div><label>Owner (optional)</label><input type="text" id="ntOwner"></div>
+    </div>
+    <label>Task</label><input type="text" id="ntTitle" maxlength="200">
+    <p><button class="btn" id="ntAdd">Add task</button></p>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="tab" id="t-team">
+  <div class="card">
+    <h2>Choose where you will serve</h2>
+    <p class="muted" style="margin-top:0">Pick up to 3 workstreams. You are free to bring in people you work well with; note them below, or ask the Director for suggestions.</p>
+    <div id="wsPick"></div>
+    <label><input type="checkbox" id="jLead" style="width:auto"> I am willing to <b>lead</b> a workstream</label>
+    <label>Time I can realistically give</label>
+    <select id="jHours"><option>Up to 1 hour a week</option><option>1–2 hours a week</option><option>2–4 hours a week</option><option>Mainly in the final month</option><option>Mainly on the day itself</option></select>
+    <label>Note (people you'd like to bring in, skills, or constraints)</label>
+    <textarea id="jNote" maxlength="400"></textarea>
+    <p><button class="btn" id="jSave">Save my choice</button></p>
+  </div>
+  <div class="card"><h3>Who is where</h3><div id="roster"></div></div>
+</section>
+
+<!-- CAREERS -->
+<section class="tab" id="t-careers">
+  <div class="card">
+    <h2>"Meet a Professional": careers to bring</h2>
+    <p class="muted" style="margin-top:0">Suggest careers our teens asked about (doctor, engineer, lawyer, journalist, designer, tech, sports, etc.) and <b>who</b> could come: a person, church member or company.</p>
+    <div class="grid g3">
+      <div><label>Career</label><input type="text" id="cCareer" maxlength="80" placeholder="e.g. Medicine"></div>
+      <div><label>Suggested person / company</label><input type="text" id="cWho" maxlength="200" placeholder="e.g. Dr. A. (LUTH)"></div>
+      <div><label>Contact (optional)</label><input type="text" id="cContact" maxlength="120"></div>
+    </div>
+    <p><button class="btn" id="cAdd">Add suggestion</button></p>
+  </div>
+  <div class="card"><h3>Suggestions so far <span class="small muted" id="cCount"></span></h3><div id="careerList"></div></div>
+</section>
+
+<!-- DECISIONS -->
+<section class="tab" id="t-decisions">
+  <div class="card">
+    <h2>Decisions log</h2>
+    <p class="muted" style="margin-top:0">What we have agreed, so nothing gets lost between meetings.</p>
+    <div id="decList"></div>
+  </div>
+  <div class="card" id="adminDec" style="display:none">
+    <h3>Record a decision (Director)</h3>
+    <div class="grid g3"><div><label>Date</label><input type="date" id="dDate"></div></div>
+    <label>Decision</label><textarea id="dText" maxlength="600"></textarea>
+    <p><button class="btn" id="dAdd">Record decision</button></p>
+  </div>
+</section>
+</main>
+
+<!-- comment sheet -->
+<div class="overlay" id="cmtOv"><div class="sheet">
+  <div class="sechead"><h3 id="cmtTitle">Discussion</h3><button class="btn small sec" id="cmtClose">Close</button></div>
+  <div id="cmtList"></div>
+  <label>Add your comment</label>
+  <textarea id="cmtText" maxlength="1500" placeholder="Your suggestion or question…"></textarea>
+  <p><button class="btn" id="cmtSend">Post comment</button></p>
+</div></div>
+
+<!-- sign-in sheet -->
+<div class="overlay" id="signOv"><div class="sheet">
+  <h3>Sign in to take part</h3>
+  <p class="muted small" style="margin-top:0">Use your real name so others know who commented. The committee code was shared by the Director.</p>
+  <label>Your name</label><input type="text" id="sName" maxlength="60" placeholder="e.g. Pastor John Ade">
+  <label>Committee code</label><input type="password" id="sCode" autocomplete="off">
+  <p><button class="btn" id="sGo">Sign in</button> <button class="btn sec" id="sCancel">Cancel</button> <button class="btn sec" id="sOut" style="display:none">Sign out</button></p>
+</div></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+const WS = {director:'Director', program:'1. Program & Speakers', counselling:'2. Counselling & Safeguarding', logistics:'3. Logistics & Venue', registration:'4. Registration & Districts', parents:'5. Parents & Local Churches', media:'6. Media, Online & Finance'};
+const POLLS = [
+  {id:'date', q:'Which date should we hold MARKED 2027?', opts:[['A','A. Sunday 4 April 2027 (Easter break)'],['B','B. Sunday 11 April 2027'],['C','C. Sunday 15 or 22 August 2027 (long vacation)'],['D','D. Another date (write it in your reason)']]},
+  {id:'days', q:'Should the program be one day or two days?', note:'Think about counselling time, topics, and our resources in people and funds.', opts:[['1','One full day (8 am – 4 pm)'],['2','Two days (e.g. Saturday evening + Sunday, or two Sundays)']]},
+  {id:'breakout', q:'How should breakouts work?', note:'Choosing is shorter; rotating means every teen hears every topic but needs more time.', opts:[['choose','Teens choose one topic per round (as drafted)'],['rotate','Teens rotate through all topics (longer day, or two days)'],['hybrid','Hybrid: core topics for everyone + one elective of their choice']]},
+];
+const THREAD_NAMES = {date:'1. The date', program:'2. Program template', workstreams:'3. Workstreams', deliverables:'4. Meeting 1 deliverables', timeline:'5. Timeline', budget:'6. Budget', agenda:'7. Meeting 1 agenda', 'p-reg':'Arrival & registration','p-worship':'Opening worship','p-keynote':'Plenary keynote','p-realtalk':'Real Talk live','p-break':'Movement break','p-break1':'Breakout Round 1','p-career':'Lunch + Meet a Professional','p-games':'Team games','p-break2':'Breakout 2 + Parents\' session','p-prayer':'Prayer session','p-commission':'Commissioning','p-booths':'Counselling booths'};
+const PROGRAM_DATE = new Date('2027-04-04T08:00:00+01:00');
+
+let D = {tasks:[],comments:[],careers:[],team:[],decisions:[],votes:{}};
+let me = {name:'', code:'', admin:false};
+let wsFilter = 'all', openThread = null;
+
+const $ = s => document.querySelector(s);
+const el = (tag, attrs={}, ...kids) => { const e=document.createElement(tag); for(const [k,v] of Object.entries(attrs)){ if(k==='class') e.className=v; else if(k==='text') e.textContent=v; else if(k.startsWith('on')) e.addEventListener(k.slice(2),v); else e.setAttribute(k,v);} kids.flat().forEach(c=>{ if(c==null) return; e.append(c.nodeType?c:document.createTextNode(c)); }); return e; };
+const store = { get(k){ try{return localStorage.getItem(k);}catch(_){return null;} }, set(k,v){ try{localStorage.setItem(k,v);}catch(_){} }, del(k){ try{localStorage.removeItem(k);}catch(_){} } };
+function toast(m){ const t=$('#toast'); t.textContent=m; t.style.display='block'; clearTimeout(toast._t); toast._t=setTimeout(()=>t.style.display='none',3200); }
+const fmtDate = s => { if(!s) return ''; const d=new Date(s+'T12:00:00'); return isNaN(d)?s:d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); };
+const ago = ts => { const m=Math.round((Date.now()-ts)/60000); if(m<1) return 'just now'; if(m<60) return m+' min ago'; const h=Math.round(m/60); if(h<24) return h+' h ago'; return Math.round(h/24)+' d ago'; };
+const today = () => new Date().toISOString().slice(0,10);
+
+// ---------- api ----------
+async function load(){
+  try{
+    const r = await fetch('/api/data',{cache:'no-store'}); const j = await r.json();
+    if(!j.ok) throw new Error(j.error||'load failed');
+    D = j; $('#demo').style.display = j.demo ? 'block':'none';
+    render();
+  }catch(e){ toast('Could not load data: '+e.message); }
+}
+async function post(action, payload={}){
+  if(!me.name){ openSign(); throw new Error('Please sign in first'); }
+  const r = await fetch('/api/data',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action,name:me.name,code:me.code,...payload})});
+  let j={}; try{ j=await r.json(); }catch(_){}
+  if(!r.ok || !j.ok){ const m=j.error||('Error '+r.status); toast(m); throw new Error(m); }
+  await load(); return j;
+}
+
+// ---------- auth ----------
+function setMe(){ $('#whoChip').textContent = me.name ? ('Signed in: '+me.name+(me.admin?' (Director)':'')) : 'Not signed in'; $('#signBtn').textContent = me.name ? 'Change' : 'Sign in'; $('#adminTask').style.display = me.admin?'block':'none'; $('#adminDec').style.display = me.admin?'block':'none'; }
+function openSign(){ $('#sName').value=me.name; $('#sCode').value=me.code; $('#sOut').style.display=me.name?'inline-block':'none'; $('#signOv').classList.add('on'); setTimeout(()=>$('#sName').focus(),50); }
+$('#signBtn').onclick=openSign; $('#sCancel').onclick=()=>$('#signOv').classList.remove('on');
+$('#sOut').onclick=()=>{ me={name:'',code:'',admin:false}; store.del('m27me'); setMe(); render(); $('#signOv').classList.remove('on'); };
+$('#sGo').onclick=async()=>{
+  const name=$('#sName').value.trim(), code=$('#sCode').value.trim(); if(!name){ toast('Please enter your name'); return; }
+  try{ const r=await fetch('/api/data',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'ping',name,code})}); const j=await r.json(); if(!j.ok) { toast(j.error||'Sign-in failed'); return; }
+    me={name,code,admin:!!j.admin}; store.set('m27me',JSON.stringify(me)); setMe(); render(); $('#signOv').classList.remove('on'); toast('Welcome, '+name+'!'); }
+  catch(e){ toast('Sign-in failed: '+e.message); }
+};
+try{ const s=JSON.parse(store.get('m27me')||'null'); if(s&&s.name) me=s; }catch(_){}
+
+// ---------- tabs ----------
+function showTab(t){ document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===t)); document.querySelectorAll('.tab').forEach(s=>s.classList.toggle('on',s.id==='t-'+t)); window.scrollTo({top:0}); store.set('m27tab',t); }
+$('#tabs').addEventListener('click',e=>{ const b=e.target.closest('button'); if(b) showTab(b.dataset.t); });
+document.addEventListener('click',e=>{ const a=e.target.closest('[data-goto]'); if(a){ e.preventDefault(); showTab(a.dataset.goto);} });
+
+// ---------- comments ----------
+function threadComments(id){ return D.comments.filter(c=>c.thread===id).sort((a,b)=>a.ts-b.ts); }
+function renderDiscButtons(){
+  document.querySelectorAll('[data-thread]').forEach(sp=>{
+    const id=sp.dataset.thread, n=threadComments(id).length;
+    sp.replaceChildren(el('button',{class:'disc',onclick:()=>openComments(id)},'💬 Discuss ',el('span',{class:'c'+(n?'':' z')},String(n))));
+  });
+}
+function openComments(id){ openThread=id; $('#cmtTitle').textContent='Discussion: '+(THREAD_NAMES[id]||id); renderThread(); $('#cmtOv').classList.add('on'); }
+function renderThread(){
+  if(!openThread) return; const list=$('#cmtList'); const cs=threadComments(openThread);
+  list.replaceChildren(...(cs.length?cs.map(c=>el('div',{class:'cmt'},el('div',{class:'h'},el('b',{},c.name),' · '+ago(c.ts),(me.admin||me.name.toLowerCase()===c.name.toLowerCase())?el('button',{class:'linkbtn',onclick:()=>post('deleteComment',{id:c.id}).catch(()=>{})},'delete'):null),el('p',{},c.text))):[el('p',{class:'muted'},'No comments yet. Be the first.')]));
+}
+$('#cmtClose').onclick=()=>{ $('#cmtOv').classList.remove('on'); openThread=null; };
+$('#cmtSend').onclick=async()=>{ const t=$('#cmtText').value.trim(); if(!t) return; try{ await post('comment',{thread:openThread,text:t}); $('#cmtText').value=''; toast('Comment posted'); }catch(_){} };
+document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{ if(e.target===o){ o.classList.remove('on'); if(o.id==='cmtOv') openThread=null; } }));
+
+// ---------- polls ----------
+const pollDraft = {};
+function renderPolls(){
+  const box=$('#polls'); box.replaceChildren();
+  POLLS.forEach(p=>{
+    const votes=D.votes[p.id]||[]; const mine=votes.find(v=>me.name&&v.name.toLowerCase()===me.name.toLowerCase());
+    const draft = pollDraft[p.id] || (pollDraft[p.id]={option:mine?mine.option:'', reason:mine?mine.reason:''});
+    const card=el('div',{class:'card'},el('h3',{},p.q), p.note?el('p',{class:'muted small',style:'margin-top:0'},p.note):null);
+    p.opts.forEach(([v,l])=>{ const r=el('input',{type:'radio',name:'poll-'+p.id,value:v}); if(draft.option===v) r.checked=true;
+      r.onchange=()=>{ draft.option=v; card.querySelectorAll('.opt').forEach(o=>o.classList.toggle('sel',o.dataset.v===v)); };
+      const o=el('label',{class:'opt'+(draft.option===v?' sel':'')},r,el('span',{},l)); o.dataset.v=v; card.append(o); });
+    const ta=el('textarea',{maxlength:'800',placeholder:'Your reason (required)'}); ta.value=draft.reason; ta.oninput=()=>draft.reason=ta.value;
+    card.append(el('label',{},'Why?'),ta,el('p',{},el('button',{class:'btn',onclick:async()=>{ if(!draft.option){toast('Choose an option');return;} try{ await post('vote',{poll:p.id,option:draft.option,reason:draft.reason}); toast(mine?'Vote updated':'Vote recorded'); }catch(_){} }},mine?'Update my vote':'Submit my vote')));
+    const total=votes.length; const res=el('div',{},el('h3',{style:'font-size:17px;margin-top:10px'},'Results so far ('+total+' vote'+(total===1?'':'s')+')'));
+    p.opts.forEach(([v,l])=>{ const n=votes.filter(x=>x.option===v).length; const pct=total?Math.round(100*n/total):0;
+      res.append(el('div',{class:'tally'},el('div',{},el('div',{class:'small'},l),el('div',{class:'bar'},el('i',{style:'width:'+pct+'%'}))),el('b',{},String(n)))); });
+    if(total){ const rs=el('div',{class:'reasons'}); votes.sort((a,b)=>b.ts-a.ts).forEach(v=>{ const lbl=(p.opts.find(o=>o[0]===v.option)||[,''])[1].split(' (')[0]; rs.append(el('div',{class:'reason'},el('b',{},v.name),' voted ',el('i',{},lbl),': ',v.reason)); }); res.append(rs); }
+    card.append(res); box.append(card);
+  });
+}
+
+// ---------- tracker ----------
+const isOver = t => t.status!=='Done' && t.due && t.due < today();
+function renderTracker(){
+  const f=$('#wsFilters'); f.replaceChildren(...[['all','All'],...Object.entries(WS)].map(([k,l])=>el('button',{class:wsFilter===k?'on':'',onclick:()=>{wsFilter=k;renderTracker();}},l)));
+  const tasks=D.tasks.filter(t=>wsFilter==='all'||t.ws===wsFilter).sort((a,b)=>(a.due||'9').localeCompare(b.due||'9'));
+  const done=D.tasks.filter(t=>t.status==='Done').length; $('#trkSummary').textContent=done+' of '+D.tasks.length+' done';
+  $('#taskList').replaceChildren(...tasks.map(t=>{
+    const sel=el('select',{}); ['Not started','In progress','Done','Blocked'].forEach(s=>{ const o=el('option',{value:s},s); if(t.status===s) o.selected=true; sel.append(o); });
+    sel.disabled=!me.name; sel.onchange=()=>post('taskUpdate',{id:t.id,status:sel.value}).catch(()=>render());
+    const meta=el('div',{class:'meta'},el('span',{class:'pill-ws'},WS[t.ws]||t.ws),' Due '+fmtDate(t.due)+' ',isOver(t)?el('span',{class:'over'},'· overdue'):null,' · Owner: '+(t.owner||'not assigned'),t.updatedBy?(' · updated by '+t.updatedBy+' '+ago(t.updatedAt)):'');
+    const left=el('div',{},el('div',{style:'font-weight:600'},t.title),meta,t.note?el('div',{class:'small',style:'margin-top:4px'},'📝 '+t.note):null);
+    const acts=el('div',{class:'small',style:'margin-top:6px;display:flex;gap:10px;flex-wrap:wrap'});
+    if(me.name){
+      acts.append(el('a',{href:'#',onclick:e=>{e.preventDefault(); const o=prompt('Owner for this task:',t.owner||me.name); if(o!==null) post('taskUpdate',{id:t.id,owner:o}).catch(()=>{});}},'Set owner'),
+                  el('a',{href:'#',onclick:e=>{e.preventDefault(); const n=prompt('Short progress note:',t.note||''); if(n!==null) post('taskUpdate',{id:t.id,note:n}).catch(()=>{});}},'Add note'));
+      if(me.admin) acts.append(el('a',{href:'#',onclick:e=>{e.preventDefault(); const ti=prompt('Task title:',t.title); if(ti===null) return; const du=prompt('Due date (YYYY-MM-DD):',t.due||''); if(du===null) return; post('taskEdit',{id:t.id,title:ti,due:du}).catch(()=>{});}},'Edit'),
+                               el('a',{href:'#',style:'color:var(--red)',onclick:e=>{e.preventDefault(); if(confirm('Delete this task?')) post('taskDelete',{id:t.id}).catch(()=>{});}},'Delete'));
+    }
+    left.append(acts);
+    return el('div',{class:'task'},left,el('div',{},el('span',{class:'tag st-'+t.status.split(' ')[0]},t.status),el('div',{style:'margin-top:6px'},sel)));
+  }));
+  if(!tasks.length) $('#taskList').append(el('p',{class:'muted'},'No tasks here yet.'));
+}
+const ntWs=$('#ntWs'); Object.entries(WS).forEach(([k,l])=>ntWs.append(el('option',{value:k},l)));
+$('#ntAdd').onclick=async()=>{ try{ await post('taskAdd',{ws:ntWs.value,title:$('#ntTitle').value,due:$('#ntDue').value,owner:$('#ntOwner').value}); $('#ntTitle').value=''; toast('Task added'); }catch(_){} };
+
+// ---------- team ----------
+const pick=$('#wsPick'); const pickSel=new Set();
+Object.entries(WS).filter(([k])=>k!=='director').forEach(([k,l])=>{ const cb=el('input',{type:'checkbox',value:k}); cb.onchange=()=>{ if(cb.checked){ if(pickSel.size>=3){cb.checked=false;toast('Up to 3 workstreams');return;} pickSel.add(k);} else pickSel.delete(k); cb.parentNode.classList.toggle('sel',cb.checked); }; pick.append(el('label',{class:'opt'},cb,el('span',{},l))); });
+function syncMyTeam(){ const m=D.team.find(x=>me.name&&x.name.toLowerCase()===me.name.toLowerCase()); if(!m||syncMyTeam.done) return; syncMyTeam.done=true; pickSel.clear(); pick.querySelectorAll('input').forEach(cb=>{ cb.checked=m.workstreams.includes(cb.value); if(cb.checked) pickSel.add(cb.value); cb.parentNode.classList.toggle('sel',cb.checked); }); $('#jLead').checked=!!m.lead; if(m.hours) $('#jHours').value=m.hours; $('#jNote').value=m.note||''; }
+$('#jSave').onclick=async()=>{ try{ await post('join',{workstreams:[...pickSel],lead:$('#jLead').checked,hours:$('#jHours').value,note:$('#jNote').value}); toast('Saved. Thank you for serving!'); }catch(_){} };
+function renderTeam(){
+  const box=$('#roster'); box.replaceChildren();
+  Object.entries(WS).filter(([k])=>k!=='director').forEach(([k,l])=>{
+    const ms=D.team.filter(m=>m.workstreams.includes(k));
+    box.append(el('div',{class:'member'},el('div',{},el('b',{},l)),el('div',{class:'small',style:'text-align:right;max-width:65%'},ms.length?ms.map(m=>m.name+(m.lead?' (willing to lead)':'')).join(', '):el('span',{class:'muted'},'No one yet'))));
+  });
+  if(D.team.length){ box.append(el('h3',{style:'font-size:17px;margin-top:16px'},'Notes from members'));
+    D.team.filter(m=>m.note||m.hours).forEach(m=>box.append(el('div',{class:'reason'},el('b',{},m.name),' · '+(m.hours||'')+(m.note?' · '+m.note:'')))); }
+}
+
+// ---------- careers ----------
+$('#cAdd').onclick=async()=>{ try{ await post('career',{career:$('#cCareer').value,who:$('#cWho').value,contact:$('#cContact').value}); ['#cCareer','#cWho','#cContact'].forEach(s=>$(s).value=''); toast('Added'); }catch(_){} };
+function renderCareers(){
+  const list=$('#careerList'); const groups={};
+  D.careers.forEach(c=>{ const k=c.career.trim().toLowerCase(); (groups[k]=groups[k]||{label:c.career.trim(),items:[]}).items.push(c); });
+  const keys=Object.keys(groups).sort(); $('#cCount').textContent='('+keys.length+' career'+(keys.length===1?'':'s')+')';
+  list.replaceChildren(...(keys.length?keys.map(k=>el('div',{class:'member'},el('b',{},groups[k].label),el('div',{class:'small',style:'max-width:70%'},...groups[k].items.map(c=>el('div',{},(c.who||'—')+(c.contact?' · '+c.contact:''),el('span',{class:'muted'},' (suggested by '+c.name+')'),(me.admin||(me.name&&me.name.toLowerCase()===c.name.toLowerCase()))?el('button',{class:'linkbtn',onclick:()=>post('deleteCareer',{id:c.id}).catch(()=>{})},'remove'):null))))):[el('p',{class:'muted'},'No suggestions yet.')]));
+}
+
+// ---------- decisions ----------
+$('#dAdd').onclick=async()=>{ try{ await post('decision',{text:$('#dText').value,date:$('#dDate').value}); $('#dText').value=''; toast('Decision recorded'); }catch(_){} };
+function renderDecisions(){
+  const ds=[...D.decisions].sort((a,b)=>(b.date||'').localeCompare(a.date||'')||b.ts-a.ts);
+  $('#decList').replaceChildren(...(ds.length?ds.map(d=>el('div',{class:'reason'},el('b',{},fmtDate(d.date)),' · ',d.text,me.admin?el('button',{class:'linkbtn',onclick:()=>{ if(confirm('Remove this decision?')) post('deleteDecision',{id:d.id}).catch(()=>{}); }},'remove'):null)):[el('p',{class:'muted'},'No decisions recorded yet.')]));
+}
+
+// ---------- dashboard ----------
+function renderDash(){
+  const days=Math.max(0,Math.ceil((PROGRAM_DATE-Date.now())/86400000)); $('#dDays').textContent=days;
+  const done=D.tasks.filter(t=>t.status==='Done').length; $('#dPct').textContent=D.tasks.length?Math.round(100*done/D.tasks.length)+'%':'0%';
+  $('#dTeam').textContent=D.team.length;
+  $('#wsProgress').replaceChildren(...Object.entries(WS).map(([k,l])=>{ const ts=D.tasks.filter(t=>t.ws===k); const d=ts.filter(t=>t.status==='Done').length; const pct=ts.length?Math.round(100*d/ts.length):0;
+    return el('div',{class:'wsrow'},el('div',{class:'small',style:'font-weight:600'},l),el('div',{class:'bar'},el('i',{style:'width:'+pct+'%'})),el('div',{class:'small',style:'text-align:right'},d+'/'+ts.length)); }));
+  const od=D.tasks.filter(t=>isOver(t)||t.status==='Blocked');
+  $('#overdue').replaceChildren(...(od.length?od.map(t=>el('div',{class:'it'},el('span',{class:'tag st-'+t.status.split(' ')[0]},t.status==='Blocked'?'Blocked':'Overdue'),' ',t.title,el('div',{class:'small muted'},WS[t.ws]+' · due '+fmtDate(t.due)+(t.owner?' · '+t.owner:'')))):[el('p',{class:'muted'},'Nothing overdue. Well done!')]));
+  const lim=new Date(Date.now()+21*86400000).toISOString().slice(0,10);
+  const up=D.tasks.filter(t=>t.status!=='Done'&&t.due>=today()&&t.due<=lim).sort((a,b)=>a.due.localeCompare(b.due));
+  $('#upcoming').replaceChildren(...(up.length?up.map(t=>el('div',{class:'it'},el('b',{},fmtDate(t.due)),' · ',t.title,el('div',{class:'small muted'},WS[t.ws]+(t.owner?' · '+t.owner:'')))):[el('p',{class:'muted'},'Nothing due in the next 3 weeks.')]));
+  const act=[...D.comments.map(c=>({ts:c.ts,t:c.name+' commented on '+(THREAD_NAMES[c.thread]||c.thread)})),
+    ...Object.entries(D.votes).flatMap(([p,vs])=>vs.map(v=>({ts:v.ts,t:v.name+' voted on '+({date:'the date',days:'one or two days',breakout:'breakout format'}[p])}))),
+    ...D.tasks.filter(t=>t.updatedAt).map(t=>({ts:t.updatedAt,t:t.updatedBy+' updated "'+t.title+'" ('+t.status+')'})),
+    ...D.team.map(m=>({ts:m.ts,t:m.name+' joined '+m.workstreams.map(w=>WS[w].replace(/^\d\. /,'')).join(', ')})),
+    ...D.careers.map(c=>({ts:c.ts,t:c.name+' suggested a career: '+c.career}))].sort((a,b)=>b.ts-a.ts).slice(0,8);
+  $('#activity').replaceChildren(...(act.length?act.map(a=>el('div',{class:'it'},a.t,el('div',{class:'small muted'},ago(a.ts)))):[el('p',{class:'muted'},'No activity yet.')]));
+}
+
+function render(){ setMe(); renderDiscButtons(); renderThread(); renderPolls(); renderTracker(); syncMyTeam(); renderTeam(); renderCareers(); renderDecisions(); renderDash(); }
+
+setMe();
+const lastTab=store.get('m27tab'); if(lastTab && document.getElementById('t-'+lastTab)) showTab(lastTab);
+load();
+setInterval(()=>{ if(document.visibilityState==='visible' && !document.activeElement?.matches('textarea,input')) load(); },30000);
+})();
+</script>
+</body>
+</html>

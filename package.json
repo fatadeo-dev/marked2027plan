@@ -1,0 +1,7 @@
+{
+  "name": "marked-2027-planning-hub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MARKED 2027 planning committee hub (LEAC Children's Ministries)",
+  "engines": { "node": ">=18" }
+}
